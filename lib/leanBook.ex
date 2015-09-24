@@ -13,6 +13,7 @@ defmodule LeanBook do
       worker(LeanBook.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(LeanBook.Worker, [arg1, arg2, arg3]),
+      worker(RubyServer, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
