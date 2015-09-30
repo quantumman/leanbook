@@ -25,6 +25,7 @@ defmodule LeanBook.Article do
     |> cast(params, @required_fields, @optional_fields)
   end
 
+  before_insert :convert
   def convert(changeset) do
     content =
       changeset
