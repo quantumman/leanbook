@@ -15,6 +15,9 @@ defmodule LeanBook.Router do
 
   scope "/", LeanBook do
     pipe_through :browser # Use the default browser stack
+
+    get "/", ArticleController, :index
+    resources "/articles", ArticleController
   end
 
   # Other scopes may use custom stacks.
