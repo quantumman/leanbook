@@ -4,9 +4,6 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Content</th>
-      <th>Source</th>
-      <th>Toc</th>
 
       <th></th>
     </tr>
@@ -15,9 +12,6 @@
 <%= for article <- @articles do %>
     <tr>
       <td><%= article.title %></td>
-      <td><%= article.content %></td>
-      <td><%= article.source %></td>
-      <td><%= article.toc %></td>
 
       <td class="text-right">
         <%= link "Show", to: article_path(@conn, :show, article), class: "btn btn-default btn-xs" %>
