@@ -5,12 +5,12 @@ defmodule RubyServer do
     GenServer.start_link(__MODULE__, nil, opts)
   end
 
-  def cast(server, cmd) do
-    GenServer.cast(server, {:cast, cmd})
+  def cast(cmd, input) do
+    GenServer.cast(RubyServer, {:cast, cmd, input})
   end
 
-  def call(server, cmd) do
-    GenServer.call(server, {:call, cmd})
+  def call(cmd, input) do
+    GenServer.call(RubyServer, {:call, cmd, input})
   end
 
 
@@ -18,13 +18,13 @@ defmodule RubyServer do
     {:ok, %{port: start_port, next_id: 1, awaiting: %{}}}
   end
 
-  def handle_cast({:cast, cmd}, state) do
-    {_id, state} = send_request(state, {:cast, cmd})
+  def handle_cast({:cast, cmd, input}, state) do
+    {_id, state} = send_request(state, {:cast, cmd, input})
     {:noreply, state}
   end
 
-  def handle_call({:call, cmd}, from, state) do
-    {id, state} = send_request(state, {:call, cmd})
+  def handle_call({:call, cmd, input}, from, state) do
+    {id, state} = send_request(state, {:call, cmd, input})
     {:noreply, %{state | awaiting: Map.put(state.awaiting, id, from)}}
   end
 
@@ -82,6 +82,8 @@ defmodule RubyServer do
         while (cmd = receive_input) do
           if [:call, :cast].include?(cmd[0])
             puts "Ruby: #{cmd[1]}\r"
+            puts "Ruby: #{cmd[2]}\r"
+            source = cmd[2]
             res = eval(cmd[1], context)
             puts "Ruby: #{res.inspect}\n\r"
             send_response(res) if cmd[0] == :call
