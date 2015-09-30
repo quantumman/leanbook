@@ -26,6 +26,7 @@ defmodule LeanBook.Article do
   end
 
   before_insert :convert
+  before_update :convert
   def convert(changeset) do
     content =
       changeset
