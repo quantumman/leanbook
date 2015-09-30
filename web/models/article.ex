@@ -1,6 +1,8 @@
 defmodule LeanBook.Article do
   use LeanBook.Web, :model
 
+  alias RubyServer.AsciiDoctor
+
   schema "articles" do
     field :title, :string
     field :content, :string
@@ -21,5 +23,15 @@ defmodule LeanBook.Article do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+  end
+
+  def convert(changeset) do
+    content =
+      changeset
+      |> Ecto.Changeset.get_change(:source)
+      |> AsciiDoctor.convert
+
+    changeset
+    |> Ecto.Changeset.put_change(:content, content)
   end
 end

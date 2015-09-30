@@ -3,7 +3,7 @@ defmodule RubyServer.AsciiDoctor do
     RubyServer.call(
       ~s"""
       require('asciidoctor')
-      html = Asciidoctor.convert source, header_footer: true,  safe: 'safe'
+      html = Asciidoctor.convert source, header_footer: true, safe: 'safe'
       html || ""
       """,
       ~s"""
