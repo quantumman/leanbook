@@ -4,7 +4,9 @@ import ExtractTextPlugin from "extract-text-webpack-plugin";
 import path from "path";
 
 module.exports = {
-  entry: ["./web/static/css/app.css", "./web/static/js/app.js"],
+  entry: {
+    app: "./web/static/js/app.js"
+  },
   output: {
     path: "./priv/static",
     filename: "js/app.js"
