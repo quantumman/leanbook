@@ -21,7 +21,13 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+        loader: ExtractTextPlugin.extract(
+          "style-loader",
+          "css-loader?sourceMap",
+          {
+            publicPath: "./priv/static/css"
+          }
+        )
       },
       {
         test: /\.scss$/,
