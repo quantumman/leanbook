@@ -35,6 +35,11 @@ module.exports = {
   devtool: "sourcemap",
 
   plugins: [
-    new ExtractTextPlugin("css/app.css")
+    new ExtractTextPlugin(
+      "css/[name].css?[hash]-[chunkhash]-[contenthash]-[name]", {
+        disable: false,
+        allChunks: true
+      }
+    )
   ]
 }
