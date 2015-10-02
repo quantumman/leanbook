@@ -13,6 +13,14 @@ module.exports = {
   },
 
   module: {
+    preLoaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'eslint-loader'
+      }
+    ],
+
     loaders: [
       {
         test: /\.js$/,
