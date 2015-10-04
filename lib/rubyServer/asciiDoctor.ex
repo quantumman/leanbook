@@ -6,7 +6,11 @@ defmodule RubyServer.AsciiDoctor do
       html = Asciidoctor.convert source, header_footer: true,  safe: 'safe'
       html || ""
       """,
-      input
+      ~s"""
+      :toc: right
+
+      #{input}
+      """
     )
     |> Floki.find("body")
     |> to_html
