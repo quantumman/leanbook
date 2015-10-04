@@ -21,10 +21,16 @@ defmodule RubyServer.AsciiDoctor do
       []                           -> ""
       text when is_bitstring(text) -> text
       [h|t]                        -> to_html(h) <> to_html(t)
-      {"body", attrs, children}    -> to_html({"main", attrs, children})
+      {"body", attrs, children}    -> to_html({"main", enforce_toc_right(attrs), children})
       {elem, attrs, children}      ->
         "<#{elem}#{to_attr attrs}>#{to_html children}</#{elem}>"
     end
+  end
+  defp enforce_toc_right(attrs) do
+    Enum.map(
+      attrs,
+      fn {key, value} -> {key, String.replace(value, "toc-left", "toc-right")} end
+    )
   end
   defp to_attr(attrs) do
     List.foldl(
