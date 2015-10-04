@@ -1,15 +1,16 @@
 'use strict';
 
-import ExtractTextPlugin from "extract-text-webpack-plugin";
 import path from "path";
 
 module.exports = {
   entry: {
-    app: "./web/static/js/app.js"
+    app: "./web/static/js/app.js",
+    reader: "./web/static/js/reader.js"
   },
   output: {
     path: "./priv/static",
-    filename: "js/app.js"
+    filename: "js/[name].js?[hash]",
+    chunkFilename: "[id].js"
   },
 
   module: {
@@ -29,33 +30,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract(
-          "style-loader",
-          "css-loader?sourceMap",
-          {
-            publicPath: "./priv/static/css"
-          }
-        )
+        loader: "style-loader!css-loader?sourceMap"
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract(
-          "style-loader",
-          "css-loader!sass-loader?includePaths[]="
-            + (path.resolve(__dirname, "./node_modules"))
-        )
+        loader: "style-loadercss-loader!sass-loader?includePaths[]="
+          + (path.resolve(__dirname, "./node_modules"))
       }
     ]
   },
 
-  devtool: "sourcemap",
-
-  plugins: [
-    new ExtractTextPlugin(
-      "css/[name].css?[hash]-[chunkhash]-[contenthash]-[name]", {
-        disable: false,
-        allChunks: true
-      }
-    )
-  ]
+  devtool: "sourcemap"
 }
