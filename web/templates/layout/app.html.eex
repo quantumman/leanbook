@@ -8,8 +8,7 @@
     <meta name="author" content="">
 
     <title><%= page_title @conn, assigns %></title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
-  </head>
+   </head>
 
   <body>
     <div class="container-fluid" role="main">
