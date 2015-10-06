@@ -1,5 +1,6 @@
 'use strict';
 
+import webpack from "webpack";
 import path from "path";
 
 module.exports = {
@@ -40,5 +41,14 @@ module.exports = {
     ]
   },
 
-  devtool: "sourcemap"
+  devtool: "sourcemap",
+
+  plugin: [
+    new webpack.ProvidePlugin({
+      jQuery: "jquery",
+      "window.jQuery": "jquery",
+      jquery: "jquery",
+      $: "jquery"
+    })
+  ]
 }
