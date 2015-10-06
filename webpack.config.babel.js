@@ -52,7 +52,8 @@ module.exports = {
       jQuery: "jquery",
       "window.jQuery": "jquery",
       jquery: "jquery",
-      $: "jquery"
+      $: "jquery",
+      m: "mithril"
     })
   ]
 }
