@@ -14,6 +14,18 @@ module.exports = {
     chunkFilename: "[id].js"
   },
 
+  resolve: {
+    modulesDirectories: [
+      "node_modules",
+      "bower_components",
+      "vendor/js",
+      "vendor/css",
+      "web/static/js",
+      "web/static/css",
+      "deps"
+    ]
+  },
+
   module: {
     preLoaders: [
       {
