@@ -1,1 +1,2 @@
 deps/**/*.js
+web/static/vendor
