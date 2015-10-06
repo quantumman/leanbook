@@ -20,3 +20,5 @@ import "../../../deps/phoenix_html/web/static/js/phoenix_html";
 
 // import socket from "./socket"
 import "../css/app.css";
+import "../vendor/css/bootstrap.css";
+import "../vendor/js/bootstrap.js";
