@@ -18,7 +18,7 @@ module.exports = {
     preLoaders: [
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules|bower_components|vendor)/,
         loader: 'eslint-loader'
       }
     ],
@@ -26,7 +26,7 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: /(node_module|bower_components|vendor)/,
         loader: "babel-loader"
       },
       {
