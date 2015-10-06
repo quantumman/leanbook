@@ -30,6 +30,10 @@ module.exports = {
         loader: "babel-loader"
       },
       {
+        test: /vendor\/js\/bootstrap\.js$/,
+        loader: "imports-loader?jQuery=jquery"
+      },
+      {
         test: /\.css$/,
         loader: "style-loader!css-loader?sourceMap"
       },
