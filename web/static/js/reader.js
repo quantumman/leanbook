@@ -1,1 +1,1 @@
-import "../css/asciidoctor.css";
+import "asciidoctor.css";
