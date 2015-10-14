@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "test": "webpack-dev-server --content-base ./test/js/"
+  },
   "repository": {},
   "dependencies": {
     "jquery": "^2.1.4",
