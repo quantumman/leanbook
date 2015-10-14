@@ -1,5 +1,8 @@
 {
   stage: 0,
   jsxPragma: "m",
-  plugins: ["babel-plugin-mjsx"]
+  plugins: [
+    "babel-plugin-mjsx",
+    "babel-plugin-espower"
+  ]
 }
