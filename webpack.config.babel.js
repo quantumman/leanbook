@@ -2,11 +2,13 @@
 
 import webpack from "webpack";
 import path from "path";
+import glob from "glob";
 
 module.exports = {
   entry: {
-    app: "./web/static/js/app.js",
-    reader: "./web/static/js/reader.js"
+    app: ["./web/static/js/app.js"],
+    reader: "./web/static/js/reader.js",
+    test: glob.sync("./test/js/**/*.js")
   },
   output: {
     path: "./priv/static",
@@ -42,7 +44,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        exclude: /(node_module|bower_components|vendor)/,
+        exclude: /(node_module|bower_components|vendor|test)/,
         loader: "babel-loader"
       },
       {
@@ -57,6 +59,12 @@ module.exports = {
         test: /\.scss$/,
         loader: "style-loadercss-loader!sass-loader?includePaths[]="
           + (path.resolve(__dirname, "./node_modules"))
+      },
+
+      {
+        test: /test\/js\/.+\.js$/,
+        exclude: /(node_modules|bower_components|vendor)/,
+        loader: "mocha-loader!babel-loader"
       }
     ]
   },
