@@ -29,6 +29,10 @@ module.exports = {
   module: {
     preLoaders: [
       {
+        test: /\.json$/,
+        loader: "json-loader"
+      },
+      {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components|vendor)/,
         loader: 'eslint-loader'
