@@ -8,6 +8,7 @@ module.exports = {
   entry: {
     app: ["./web/static/js/app.js"],
     reader: "./web/static/js/reader.js",
+    editor: "./web/static/js/editor/main.jsx",
     test: glob.sync("./test/js/**/*.js")
   },
   output: {
