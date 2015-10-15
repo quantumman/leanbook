@@ -2,11 +2,13 @@
 
 import webpack from "webpack";
 import path from "path";
+import glob from "glob";
 
 module.exports = {
   entry: {
-    app: "./web/static/js/app.js",
-    reader: "./web/static/js/reader.js"
+    app: ["./web/static/js/app.js"],
+    reader: "./web/static/js/reader.js",
+    test: glob.sync("./test/js/**/*.js")
   },
   output: {
     path: "./priv/static",
@@ -14,19 +16,35 @@ module.exports = {
     chunkFilename: "[id].js"
   },
 
+  resolve: {
+    modulesDirectories: [
+      "node_modules",
+      "bower_components",
+      "vendor/js",
+      "vendor/css",
+      "web/static/js",
+      "web/static/css",
+      "deps"
+    ]
+  },
+
   module: {
     preLoaders: [
       {
+        test: /\.json$/,
+        loader: "json-loader"
+      },
+      {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components|vendor)/,
-        loader: 'eslint-loader'
+        loader: "eslint-loader"
       }
     ],
 
     loaders: [
       {
-        test: /\.js$/,
-        exclude: /(node_module|bower_components|vendor)/,
+        test: /\.jsx?$/,
+        exclude: /(node_module|bower_components|vendor|test)/,
         loader: "babel-loader"
       },
       {
@@ -41,6 +59,12 @@ module.exports = {
         test: /\.scss$/,
         loader: "style-loadercss-loader!sass-loader?includePaths[]="
           + (path.resolve(__dirname, "./node_modules"))
+      },
+
+      {
+        test: /test\/js\/.+\.js$/,
+        exclude: /(node_modules|bower_components|vendor)/,
+        loader: "mocha-loader!babel-loader"
       }
     ]
   },
@@ -52,7 +76,8 @@ module.exports = {
       jQuery: "jquery",
       "window.jQuery": "jquery",
       jquery: "jquery",
-      $: "jquery"
+      $: "jquery",
+      m: "mithril"
     })
   ]
 }
