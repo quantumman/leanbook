@@ -24,7 +24,8 @@
     "env": {
         "es6": true,
         "browser": true,
-        "mocha": true
+        "mocha": true,
+        "jquery": true
     },
     "extends": "eslint:recommended",
     "ecmaFeatures": {
