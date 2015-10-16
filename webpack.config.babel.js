@@ -71,7 +71,7 @@ module.exports = {
 
   devtool: "sourcemap",
 
-  plugin: [
+  plugins: [
     new webpack.ProvidePlugin({
       jQuery: "jquery",
       "window.jQuery": "jquery",
