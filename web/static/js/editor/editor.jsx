@@ -26,3 +26,8 @@ let vm = {
     vm.preview = m.prop(renderPreview(vm.markup()));
   }
 };
+
+// Controller
+let controller = function() {
+  vm.init();
+};
