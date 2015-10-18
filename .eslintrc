@@ -31,6 +31,9 @@
         "mocha": true,
         "jquery": true
     },
+    "globals": {
+        "m": true
+    },
     "extends": "eslint:recommended",
     "ecmaFeatures": {
         "jsx": true,
