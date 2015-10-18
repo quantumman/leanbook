@@ -17,6 +17,11 @@ module.exports = {
     chunkFilename: "[id].js"
   },
 
+  externals: {
+    "xmlhttprequest": "{XMLHttpRequest:XMLHttpRequest}",
+    "fs": "fs"
+  },
+
   resolve: {
     modulesDirectories: [
       "node_modules",
