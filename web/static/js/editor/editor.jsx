@@ -5,3 +5,9 @@ let Page = function(data) {
   this.section = m.prop(data.section);
   this.markup = m.prop(data.markup);
 };
+
+// ViewModel
+let vm = {
+  init: function() {
+  }
+};
