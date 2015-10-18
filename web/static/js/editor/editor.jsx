@@ -35,7 +35,12 @@ let controller = function() {
 // View
 let view = function() {
   return (
-    <div></div>
+    <div>
+      <div class="col-xs-6">
+      </div>
+      <div class="col-xs-6">
+      </div>
+    </div>
   );
 };
 
