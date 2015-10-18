@@ -31,3 +31,10 @@ let vm = {
 let controller = function() {
   vm.init();
 };
+
+// View
+let view = function() {
+  return (
+    <div></div>
+  );
+};
