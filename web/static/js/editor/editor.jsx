@@ -38,3 +38,6 @@ let view = function() {
     <div></div>
   );
 };
+
+let Editor = {controller: controller, view: view};
+export default Editor;
