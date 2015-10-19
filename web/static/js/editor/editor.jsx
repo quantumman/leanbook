@@ -41,6 +41,7 @@ let view = function() {
         <textarea class="form-control text-editing-area" onchange={m.withAttr("value", vm.markup)}></textarea>
       </div>
       <div class="col-xs-6">
+        <div class="form-control preview-area">{m.trust(vm.preview())}</div>
       </div>
     </div>
   );
