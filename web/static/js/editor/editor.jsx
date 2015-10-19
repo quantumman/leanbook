@@ -1,5 +1,6 @@
 import _Asciidoctor_ from "asciidoctor.js";
 
+import "editor.css";
 import "asciidoctor.css";
 
 // Model
@@ -37,6 +38,7 @@ let view = function() {
   return (
     <div>
       <div class="col-xs-6">
+        <textarea class="form-control text-editing-area" onchange={m.withAttr("value", vm.markup)}></textarea>
       </div>
       <div class="col-xs-6">
       </div>
