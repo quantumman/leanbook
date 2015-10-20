@@ -30,6 +30,22 @@ let vm = {
       let html = renderPreview(value);
       vm.preview(html);
     };
+    vm.updatePreviewAutomatically = function(value) {
+      if (vm.timer) {
+        clearTimeout(vm.timer);
+        delete vm.timer;
+        m.endComputation();
+      }
+
+      m.startComputation();
+      vm.timer = setTimeout(
+        function() {
+          vm.updatePreview(value);
+          m.endComputation();
+        },
+        500
+      );
+    };
   }
 };
 
@@ -48,6 +64,7 @@ let view = function() {
                           m.withAttr("value", vm.updatePreview),
                           m.withAttr("value", vm.markup)
                           )}
+                onkeyup={m.withAttr("value", vm.updatePreviewAutomatically)}
                 value={vm.markup()}
         >
         </textarea>
