@@ -1,3 +1,4 @@
+import * as _m from "helpers/MithrilHelper";
 import _Asciidoctor_ from "asciidoctor.js";
 
 import "editor.css";
@@ -25,6 +26,10 @@ let vm = {
 
     vm.markup = m.prop("");
     vm.preview = m.prop(renderPreview(vm.markup()));
+    vm.updatePreview = function(value) {
+      let html = renderPreview(value);
+      vm.preview(html);
+    };
   }
 };
 
@@ -38,7 +43,14 @@ let view = function() {
   return (
     <div>
       <div class="col-xs-6">
-        <textarea class="form-control text-editing-area" onchange={m.withAttr("value", vm.markup)}></textarea>
+        <textarea class="form-control text-editing-area"
+                onchange={_m.multi(
+                          m.withAttr("value", vm.updatePreview),
+                          m.withAttr("value", vm.markup)
+                          )}
+                value={vm.markup()}
+        >
+        </textarea>
       </div>
       <div class="col-xs-6">
         <div class="form-control preview-area">{m.trust(vm.preview())}</div>
