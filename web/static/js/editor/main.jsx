@@ -1,3 +1,5 @@
+import Editor from "./editor.jsx";
+
 import "bootstrap.css";
 import "bootstrap.js";
 
@@ -12,6 +14,7 @@ function view() {
       <div class="col-xs-12">
         <input type="text" id="title" class="form-control" placeholder="タイトル" />
       </div>
+      <Editor />
     </div>
   );
 }
