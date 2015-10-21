@@ -9,5 +9,6 @@ let Page = function(data) {
 // ViewModel
 let vm = {
   init: function() {
+    vm.markup = m.prop("");
   }
 };
