@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 import webpack from "webpack";
 import path from "path";
@@ -8,8 +8,7 @@ module.exports = {
   entry: {
     app: ["./web/static/js/app.js"],
     reader: "./web/static/js/reader.js",
-    editor: "./web/static/js/editor/main.jsx",
-    test: glob.sync("./test/js/**/*.js")
+    editor: "./web/static/js/editor/main.jsx"
   },
   output: {
     path: "./priv/static",
@@ -45,7 +44,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        exclude: /(node_module|bower_components|vendor|test)/,
+        exclude: /(node_module|bower_components|vendor)/,
         loader: "babel-loader"
       },
       {
@@ -60,12 +59,6 @@ module.exports = {
         test: /\.scss$/,
         loader: "style-loadercss-loader!sass-loader?includePaths[]="
           + (path.resolve(__dirname, "./node_modules"))
-      },
-
-      {
-        test: /test\/js\/.+\.js$/,
-        exclude: /(node_modules|bower_components|vendor)/,
-        loader: "mocha-loader!babel-loader"
       }
     ]
   },
@@ -81,4 +74,4 @@ module.exports = {
       m: "mithril"
     })
   ]
-}
+};
